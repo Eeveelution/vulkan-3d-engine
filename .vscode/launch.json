@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'vulkan-3d-engine'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=vulkan-3d-engine",
+                    "--package=vulkan-3d-engine"
+                ],
+                "filter": {
+                    "name": "vulkan-3d-engine",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'vulkan-3d-engine'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=vulkan-3d-engine",
+                    "--package=vulkan-3d-engine"
+                ],
+                "filter": {
+                    "name": "vulkan-3d-engine",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
