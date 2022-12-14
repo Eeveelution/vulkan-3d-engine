@@ -1,5 +1,5 @@
 mod vulkan_instance;
 
 fn main() {
-    println!("Hello, world!");
+    unsafe {vulkan_instance::VulkanInstance::new(1280, 720); }
 }

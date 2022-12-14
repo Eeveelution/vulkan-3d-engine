@@ -131,6 +131,12 @@ impl VulkanInstance {
                     })  
             }).expect("Suitable Vulkan Device has not been found.");
 
+        let device_extension_names_raw = [
+                extensions::khr::Swapchain::name().as_ptr(),
+                #[cfg(any(target_os = "macos", target_os = "ios"))]
+                KhrPortabilitySubsetFn::name().as_ptr(),
+            ];
+
         let priorities = [1.0];
 
         let queue_info =
@@ -143,12 +149,14 @@ impl VulkanInstance {
                 .queue_create_infos(
                     std::slice::from_ref(&queue_info)
                 )
-                .enabled_extension_names(&extension_names);
+                .enabled_extension_names(&device_extension_names_raw);
 
         let vulkan_device =
             instance
                 .create_device(physical_device, &device_create_info, None)
                 .expect("Creation of Vulkan device failed!");
+
+        
 
     }
 }
